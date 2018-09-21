@@ -1,14 +1,60 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System;
-using ToDoList.Models;
+using HairSalon.Models;
 
-namespace ToDoList.Test
+namespace HairSalon.Test
 {
   [TestClass]
-  public class CategoryTests : IDisposable
+  public class StylistTests : IDisposable
   {
-    public CategoryTests()
+    public StylistTests()
     {
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=victoria_oh_test;";
     }
+      [TestMethod]
+      public void GetStylistName_ReturnsStylistName_String()
+      {
+        //Arrange
+        string stylistName = "Panatda";
+        Stylist newStylist = new Stylist(stylistName);
+
+        //Act
+        string result = newStylist.GetStylistName();
+
+        //Assert
+        Assert.AreEqual(stylistName, result);
+      }
+
+      [TestMethod]
+      public void GetId_Id_int()
+      {
+        //Arrange
+        int id = 0;
+        Stylist newStylist = new Stylist("", 0);
+
+        //Act
+        int result = newStylist.GetId();
+
+        //Assert
+        Assert.AreEqual(id, result);
+      }
+
+
+
+    // [TestMethod]
+    // public void GetAll_StylistsEmptyAtFirst_0()
+    // {
+    //   //Arrange, Act
+    //   int result = Stylist.GetAll().Count;
+    //
+    //   //Assert
+    //   Assert.AreEqual(0, result);
+    // }
+
+    public void Dispose()
+    {
+      Stylist.DeleteAll();
+    }
+  }
+}

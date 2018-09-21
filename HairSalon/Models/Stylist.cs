@@ -15,9 +15,38 @@ namespace HairSalon.Models
       _id = id;
     }
 
-    public string GetAll()
+    public string GetStylistName()
     {
+      return _stylistName;
+    }
+    public int GetId()
+    {
+      return _id;
+    }
 
+
+
+
+
+
+    // public string GetAll()
+    // // {
+    // //   return
+    // // }
+
+    public static void DeleteAll()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM stylists;";
+      cmd.ExecuteNonQuery();
+      conn.Close();
+
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
 
   }
