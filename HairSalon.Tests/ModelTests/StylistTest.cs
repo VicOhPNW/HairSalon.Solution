@@ -41,14 +41,25 @@ namespace HairSalon.Test
       }
 
       [TestMethod]
-      public void GetAll_StylistsEmptyAtFirst_0()
+      public void Equals_ReturnsTrueForSameName_Stylist()
       {
         //Arrange, Act
-        int result = Stylist.GetAll().Count;
+        Stylist firstName = new Stylist("Panatda");
+        Stylist secondName = new Stylist("Panatda");
 
         //Assert
-        Assert.AreEqual(0, result);
+        Assert.AreEqual(firstName, secondName);
       }
+
+      [TestMethod]
+       public void GetAll_StylistsEmptyAtFirst_0()
+       {
+         //Arrange, Act
+         int result = Stylist.GetAll().Count;
+
+         //Assert
+         Assert.AreEqual(0, result);
+       }
 
     public void Dispose()
     {
