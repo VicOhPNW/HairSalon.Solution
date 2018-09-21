@@ -60,7 +60,7 @@ namespace HairSalon.Test
          //Assert
          Assert.AreEqual(0, result);
        }
-//
+
       [TestMethod]
       public void Save_SavesStylistToDatabase_StylistList()
       {
@@ -106,10 +106,11 @@ namespace HairSalon.Test
       //Assert
       Assert.AreEqual(testStylist, foundStylist);
      }
-//
+
     public void Dispose()
     {
       Stylist.DeleteAll();
+      // Item.DeleteAll();
     }
   }
 }
