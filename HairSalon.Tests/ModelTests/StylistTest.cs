@@ -40,17 +40,15 @@ namespace HairSalon.Test
         Assert.AreEqual(id, result);
       }
 
+      [TestMethod]
+      public void GetAll_StylistsEmptyAtFirst_0()
+      {
+        //Arrange, Act
+        int result = Stylist.GetAll().Count;
 
-
-    // [TestMethod]
-    // public void GetAll_StylistsEmptyAtFirst_0()
-    // {
-    //   //Arrange, Act
-    //   int result = Stylist.GetAll().Count;
-    //
-    //   //Assert
-    //   Assert.AreEqual(0, result);
-    // }
+        //Assert
+        Assert.AreEqual(0, result);
+      }
 
     public void Dispose()
     {

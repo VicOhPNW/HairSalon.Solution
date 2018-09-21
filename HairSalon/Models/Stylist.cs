@@ -17,36 +17,52 @@ namespace HairSalon.Models
 
     public string GetStylistName()
     {
-      return _stylistName;
+        return _stylistName;
     }
     public int GetId()
     {
-      return _id;
+        return _id;
     }
 
+    public override bool Equals(System.Object otherStylist)
+        {
+            if (!(otherStylist is Stylist))
+            {
+                return false;
+            }
+            else
+            {
+                Stylist newStylist = (Stylist) otherStylist;
+                bool idEquality = this.GetId().Equals(newStylist.GetId());
+                bool nameEquality = this.GetStylistName().Equals(newStylist.GetStylistName());
+                return (idEquality && nameEquality);
+            }
+        }
+    public override int GetHashCode()
+    {
+        return this.GetId().GetHashCode();
+    }
 
-
-
-
-
-    // public string GetAll()
-    // // {
-    // //   return
-    // // }
+    public static List<Stylist> GetAll()
+    {
+        List<Stylist> allStylists = new List<Stylist>{};
+        //more code to go here
+        return allStylists;
+    }
 
     public static void DeleteAll()
     {
-      MySqlConnection conn = DB.Connection();
-      conn.Open();
-      var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"DELETE FROM stylists;";
-      cmd.ExecuteNonQuery();
-      conn.Close();
+        MySqlConnection conn = DB.Connection();
+        conn.Open();
+        var cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"DELETE FROM stylists;";
+        cmd.ExecuteNonQuery();
+        conn.Close();
 
-      if (conn != null)
-      {
-        conn.Dispose();
-      }
+        if (conn != null)
+        {
+            conn.Dispose();
+        }
     }
 
   }
