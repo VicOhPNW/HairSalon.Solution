@@ -12,7 +12,7 @@ namespace HairSalon.Test
     {
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=victoria_oh_test;";
     }
-//
+
     [TestMethod]
     public void Equals_ReturnsTrueForSameName_Client()
     {
@@ -65,6 +65,38 @@ namespace HairSalon.Test
       //Assert
       Assert.AreEqual(id, result);
     }
+
+    [TestMethod]
+    public void Save_SavesClientToDatabase_ClientList()
+    {
+      //Arrange
+      Client testClient = new Client("Victoria", 1);
+      testClient.Save();
+
+      //Act
+      List<Client> result = Client.GetAll();
+      List<Client> testList = new List<Client>{testClient};
+
+      //Assert
+      CollectionAssert.AreEqual(testList, result);
+    }
+
+    [TestMethod]
+    public void GetAll_SavesClientToDatabase_ClientList()
+    {
+      //Arrange
+      Client testClient = new Client("Victoria", 1);
+      testClient.Save();
+
+      //Act
+      List<Client> result = Client.GetAll();
+      List<Client> testList = new List<Client>{testClient};
+
+      //Assert
+      CollectionAssert.AreEqual(testList, result);
+    }
+
+
 
     //
     public void Dispose()
