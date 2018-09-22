@@ -96,6 +96,19 @@ namespace HairSalon.Test
       CollectionAssert.AreEqual(testList, result);
     }
 
+    [TestMethod]
+    public void Find_FindsClientInDatabase_Client()
+    {
+      //Arrange
+      Client testClient = new Client("Mow the lawn", 1);
+      testClient.Save();
+
+      //Act
+      Client foundClient = Client.Find(testClient.GetId());
+
+      //Assert
+      Assert.AreEqual(testClient, foundClient);
+    }
 
 
     //
